@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Ciclo3.Reto3;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -18,22 +15,22 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "client")
 public class Cliente implements Serializable {
-    
-     @Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
     private String email;
     private String password;
     private String name;
     private Integer age;
-    
-     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
-    @JsonIgnoreProperties("client")
-    public List<Mensaje>messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "client")
     @JsonIgnoreProperties("client")
-    public List<Reservaciones>reservations;
+    public List<Mensaje> messages;
+
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "client")
+    @JsonIgnoreProperties("client")
+    public List<Reservaciones> reservations;
 
     public Integer getIdClient() {
         return idClient;
@@ -90,7 +87,5 @@ public class Cliente implements Serializable {
     public void setReservations(List<Reservaciones> reservations) {
         this.reservations = reservations;
     }
-    
-    
-    
+
 }

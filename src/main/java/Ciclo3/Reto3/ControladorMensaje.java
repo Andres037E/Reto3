@@ -1,8 +1,4 @@
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Ciclo3.Reto3;
 
 import java.util.List;
@@ -21,19 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author USUARIO
- */
 @RestController
 @RequestMapping("/api/Message")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 
 public class ControladorMensaje {
-     @Autowired
+    @Autowired
     private ServiciosMensaje servico;
+
     @GetMapping("/all")
-    public List<Mensaje> getMessages(){
+    public List<Mensaje> getMessages() {
         return servico.getAll();
     }
 
@@ -47,6 +41,7 @@ public class ControladorMensaje {
     public Mensaje save(@RequestBody Mensaje message) {
         return servico.save(message);
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Mensaje update(@RequestBody Mensaje message) {
@@ -58,5 +53,5 @@ public class ControladorMensaje {
     public boolean delete(@PathVariable("id") int messageId) {
         return servico.deleteMessage(messageId);
     }
-    
+
 }

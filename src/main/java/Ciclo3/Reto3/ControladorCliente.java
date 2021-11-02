@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Ciclo3.Reto3;
 
 import java.util.List;
@@ -20,20 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author USUARIO
- */
 @RestController
 @RequestMapping("/api/Client")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 
 public class ControladorCliente {
-     @Autowired
+    @Autowired
     private ServiciosCliente servicio;
-  
+
     @GetMapping("/all")
-    public List<Cliente> getClients(){
+    public List<Cliente> getClients() {
         return servicio.getAll();
     }
 
@@ -47,6 +41,7 @@ public class ControladorCliente {
     public Cliente save(@RequestBody Cliente client) {
         return servicio.save(client);
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente update(@RequestBody Cliente client) {

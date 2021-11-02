@@ -15,21 +15,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "reservation")
-public class Reservaciones implements Serializable  {
-    
-     @Id
+public class Reservaciones implements Serializable {
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status="created";
-    
+    private String status = "created";
+
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties("reservations")
@@ -37,10 +33,10 @@ public class Reservaciones implements Serializable  {
 
     @ManyToOne
     @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"reservations","messages"})
+    @JsonIgnoreProperties({ "reservations", "messages" })
     private Cliente client;
 
-    private String score; //depende el grupo
+    private String score; // depende el grupo
 
     public Integer getIdReservation() {
         return idReservation;
@@ -98,6 +94,4 @@ public class Reservaciones implements Serializable  {
         this.score = score;
     }
 
-    
-    
 }

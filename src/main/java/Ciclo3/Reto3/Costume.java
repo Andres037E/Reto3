@@ -19,8 +19,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "costume")
-public class Costume implements Serializable{
-    
+public class Costume implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -28,18 +28,18 @@ public class Costume implements Serializable{
     private String brand;
     private Integer year;
     private String description;
-    
+
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("costume")
+    @JsonIgnoreProperties("costumes")
     private Categoria category;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "costume")
-    @JsonIgnoreProperties({"costume", "client"})
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "costume")
+    @JsonIgnoreProperties({ "costume", "client" })
     private List<Mensaje> messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "costume")
-    @JsonIgnoreProperties({"costume", "client"})
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "costume")
+    @JsonIgnoreProperties({ "costume", "client" })
     private List<Reservaciones> reservations;
 
     public Integer getId() {
@@ -106,9 +106,4 @@ public class Costume implements Serializable{
         this.reservations = reservations;
     }
 
- 
-    
-    
-    
-    
 }

@@ -20,8 +20,8 @@ public class Categoria implements Serializable {
     private Integer id;
     private String name;
     private String description;
-    
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="category")
+
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "category")
     @JsonIgnoreProperties("category")
     private List<Costume> costumes;
 
@@ -57,6 +57,4 @@ public class Categoria implements Serializable {
         this.costumes = costumes;
     }
 
-    
-    
 }

@@ -26,13 +26,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/Reservation")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 
 public class ControladorReservaciones {
-      @Autowired
+    @Autowired
     private ServiciosReservaciones servicio;
+
     @GetMapping("/all")
-    public List<Reservaciones> getReservations(){
+    public List<Reservaciones> getReservations() {
         return servicio.getAll();
     }
 
@@ -40,16 +42,19 @@ public class ControladorReservaciones {
     public Optional<Reservaciones> getReservation(@PathVariable("id") int reservationId) {
         return servicio.getReservation(reservationId);
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservaciones save(@RequestBody Reservaciones reservation) {
         return servicio.save(reservation);
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservaciones update(@RequestBody Reservaciones reservation) {
         return servicio.update(reservation);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int reservationId) {
